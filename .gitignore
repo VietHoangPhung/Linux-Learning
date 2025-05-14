@@ -1,3 +1,5 @@
+# vs code config
+.vscode/
 # Ignore kernel build and symbol files
 *.symvers
 *.order
