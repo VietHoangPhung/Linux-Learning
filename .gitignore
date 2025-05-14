@@ -1,3 +1,7 @@
+# Ignore kernel build and symbol files
+*.symvers
+*.order
+
 # Ignore compiled kernel module files
 *.ko
 *.o
@@ -24,4 +28,4 @@ out/
 
 # Ignore any backup files or directories
 *.bak
-*~ 
+*~
