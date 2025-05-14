@@ -1,0 +1,48 @@
+📝 Assignment 1: Hello Kernel
+Write a kernel module that prints "Hello, Kernel!" when loaded and "Goodbye, Kernel!" when unloaded.
+
+Use printk() to display messages.
+
+Compile, insert (using insmod), check messages with dmesg, and remove the module (rmmod).
+
+
+📝 Assignment 2: Module Parameters
+Create a module that accepts a string and an integer as parameters.
+
+Print these parameters when the module is loaded.
+
+Use module_param() and MODULE_PARM_DESC() macros.
+
+Load the module with custom parameters (insmod mymodule.ko mystring="Hello" myint=42).
+
+Verify parameter values using dmesg.
+
+
+📝 Assignment 3: Exported Functions
+Create two modules:
+
+Module A: Exports a simple math function (like addition).
+
+Module B: Uses the exported function to perform a calculation.
+
+Demonstrate module dependency by loading Module B without Module A.
+
+Use EXPORT_SYMBOL() for function export.
+
+
+📝 Assignment 4: Using procfs
+Create a kernel module that creates a file in /proc (e.g., /proc/hello).
+
+When the file is read (using cat /proc/hello), it should print a message from the kernel.
+
+Use the proc_create() API.
+
+Clean up the proc file on module removal.
+
+
+📝 Assignment 5: Simple Kernel Timer
+Create a module that uses a kernel timer to print a message every few seconds.
+
+Set up the timer during initialization and remove it on exit.
+
+Use mod_timer() and del_timer_sync() for timer handling.
