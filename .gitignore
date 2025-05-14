@@ -1,0 +1,27 @@
+# Ignore compiled kernel module files
+*.ko
+*.o
+*.mod
+*.mod.c
+*.cmd
+*.d
+
+# Ignore build-related files and directories
+/build/
+out/
+
+# Ignore temporary files from text editors
+*~
+*.swp
+*.swo
+*.bak
+
+# Ignore log files
+*.log
+
+# Ignore kernel config files (if not needed for version control)
+.config
+
+# Ignore any backup files or directories
+*.bak
+*~ 
