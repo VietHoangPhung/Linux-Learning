@@ -1,9 +1,0 @@
-{
-    "files.associations": {
-        "kernel.h": "c",
-        "module.h": "c",
-        "init.h": "c",
-        "moduleparam.h": "c",
-        "timer.h": "c"
-    }
-}
