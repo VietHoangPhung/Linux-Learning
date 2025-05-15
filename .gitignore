@@ -2,6 +2,7 @@
 .vscode/
 *test
 **test
+test.*
 # Ignore kernel build and symbol files
 *.symvers
 *.order
