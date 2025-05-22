@@ -3,6 +3,15 @@
 *test
 **test
 test.*
+
+# may be folder to store built objects
+build/
+
+# some trash that I dont even know what the fuck is it
+.fuse_hidden*
+
+# output executable
+*.out
 # Ignore kernel build and symbol files
 *.symvers
 *.order
