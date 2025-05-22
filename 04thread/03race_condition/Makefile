@@ -1,38 +1,42 @@
-# Project name = current folder
+# project & executable name
 PROJECT := $(notdir $(CURDIR))
 
-# Folders
+# directories
 SRC_DIR := src
 INC_DIR := inc
 BUILD_DIR := build
 
-# Tools and flags
+# CC and flag
 CC := gcc
 CFLAGS := -Wall -I$(INC_DIR)
 
-# Source files
+# sources
 SRCS := $(wildcard $(SRC_DIR)/*.c)
+
+# objects
 OBJS := $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRCS))
 
-# Final binary
-TARGET := $(PROJECT)
+# executable
+TARGET := $(PROJECT).out
 
-# Default target
+# all
 all: $(TARGET)
 
-# Link objects to create final executable
+# Link
 $(TARGET): $(OBJS)
 	$(CC) -o $@ $^
 
-# Compile .c into build/*.o
+# compile
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# Make sure build/ exists
 $(BUILD_DIR):
 	mkdir -p $(BUILD_DIR)
 
-# Clean
+run: 
+	@./$(TARGET)
+
+# clean
 clean:
 	rm -rf $(BUILD_DIR) $(TARGET)
 
@@ -40,7 +44,7 @@ new-%:
 	@echo "Creating new folder: $*"
 	@mkdir -p $*
 	@cp Makefile $*/Makefile
-	@mkdir $*/src $*/inc
+	@mkdir -p $*/src $*/inc
 	@touch $*/src/main.c
 	@echo "Folder $* created with a Makefile inside :D"
 

@@ -17,7 +17,7 @@ SRCS := $(wildcard $(SRC_DIR)/*.c)
 OBJS := $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRCS))
 
 # executable
-TARGET := $(PROJECT)
+TARGET := $(PROJECT).out
 
 # all
 all: $(TARGET)
@@ -45,7 +45,7 @@ new-%:
 	@mkdir -p $*
 	@cp Makefile $*/Makefile
 	@mkdir -p $*/src $*/inc
-	@touch -p $*/src/main.c
+	@touch $*/src/main.c
 	@echo "Folder $* created with a Makefile inside :D"
 
 # 
