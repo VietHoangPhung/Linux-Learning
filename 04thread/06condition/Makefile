@@ -17,7 +17,7 @@ SRCS := $(wildcard $(SRC_DIR)/*.c)
 OBJS := $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRCS))
 
 # executable
-TARGET := $(PROJECT)
+TARGET := $(PROJECT).out
 
 # all
 all: $(TARGET)
