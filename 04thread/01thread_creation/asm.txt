@@ -1,0 +1,11 @@
+tao nhieu thread, handle exits
+
+try clone
+
+rwlock & mutex & semaphore & cond
+
+lock steamlock
+
+choose specific core for thread 
+
+timelock
