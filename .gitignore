@@ -1,8 +1,11 @@
 # vs code config
 .vscode/
+
+# test folder, to send folder
 *test
-**test
 test.*
+Assignment*
+assignment*
 
 # may be folder to store built objects
 build/
