@@ -36,10 +36,10 @@ void print_file_info(const char* path, const char* name);
 void list_dir(const char* dir_path);
 
 
-int main(int argc, char *argv[]) {
+int main(int argc, char* argv[]) {
     // get the directory as the argument 
     const char* dir = (argc >= 2) ? argv[1] : ".";  // ls . if no arg given
-    list_directory(dir);
+    list_dir(dir);
     return 0;
 }
 
@@ -113,7 +113,7 @@ void list_dir(const char* dir_path) {
            "permissions", " ", "user", "group", "size",
            "last access", "last edit", "file name");
 
-    struct dirent *entry;
+    struct dirent* entry;
     char fullpath[4096];  // full path to file
 
     // iterate all entries in the directory
@@ -127,6 +127,5 @@ void list_dir(const char* dir_path) {
     // close the directory
     closedir(dir);
 }
-
 
 /* 10 2 6 6 15 20 20 120*/
