@@ -1,0 +1,30 @@
+NVIC to software interrupt
+How cpu know where is 
+
+Q: why sleep is not allowed in interrupt handler. (Sometimes it cannot exit the interrupt handler)
+A: Cuz sleep() should stick with process context. sleep() in interrupt context will be like "hmm ok suspend... but what process?"
+
+Q: spcific cases in kernel, which event is skippable and non-skippable 
+A: 
+| Event Type                     | Skippable?          | Why?                                                                                                      |
+| ------------------------------ | ------------------- | --------------------------------------------------------------------------------------------------------- |
+| **Hardware Interrupt (IRQ)**   | ❌ Non-skippable     | Critical hardware signal (e.g., data ready, timer expiry). Ignoring it can break devices.                 |
+
+| **SoftIRQ / Tasklet**          | ✅ Usually skippable | Designed for high-throughput events (like networking); can be merged or dropped if overwhelmed.           |
+
+| **Workqueue task**             | ✅ Depends           | If it's a cleanup or watchdog, sure. But if it's processing queued hardware data, not skippable.          |
+
+| **Signal to a process**        | ✅ Often skippable   | If a process misses a `SIGUSR1`, too bad; it's gone. Only real-time signals (e.g. `SIGRTMIN+n`) queue up. |
+
+| **Page fault**                 | ❌ Non-skippable     | You literally can’t continue running code without resolving this.                                         |
+
+| **Scheduler tick (timer IRQ)** | ❌ Non-skippable     | System-wide timing depends on this.                                                                       |
+
+| **Networking packet RX/TX**    | ✅ Often skippable   | Can drop under high load (e.g. RX ring buffer overflow), Linux just counts it as a dropped packet.        |
+
+| **Filesystem I/O completion**  | ❌ Non-skippable     | You asked to read from disk—missing this breaks everything.                                               |
+
+| **Poll/select wakeup event**   | ✅ Kind of           | If the process isn’t listening or gets preempted, the event can be coalesced.                             |
+
+
+examples for workqueue, softIRQ and tasklet 
