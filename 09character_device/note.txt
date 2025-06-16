@@ -1,0 +1,37 @@
+- test psuedo device
+- system calls 
+- how block device read / write data?
+- virtual memory 
+
+imagine there is a led1 character device file, changing attribute mode: on/off will 
+control the physical led. 
+echo on > /dev/led1 
+who is respondible for writing to the led1 file? 
+after complete writing, 
+
+led driver will process data and call another driver (from a module) to control actual gpio
+
+major number: group device 
+minor number: specific device
+
+why they have to separate into major number and minor number? Why not just one for each device?
+ioctl 
+
+MODULE_LICENSE() ... 
+wen module running, check for author and description
+
+why exit flow is reversed compared to init
+
+cuz del class first, kernel dont know where is the device
+
+cdev is to register device, device's operations to the kernel 
+
+cdev is for  the others to know, get the information, operations of the device. Not internal used
+
+why separate into non discoverable and self discoverable?
+
+two ways to insert platform devices
+
+kmalloc kzalloc & free
+devm_kzalloc
+FLAG 
